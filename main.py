@@ -16,5 +16,7 @@ In Washington, the House voted 211-204 to send an impeachment resolution against
 '''
 
 os.makedirs(OUT, exist_ok=True)
+# Guardrail: the gate takes 1-2000 UTF-8 chars, not only white space.
+assert 1 <= len(SUMMARY) <= 2000 and SUMMARY.strip(), "summary out of gate limits"
 with open(os.path.join(OUT, "entry.txt"), "w", encoding="utf-8") as f:
     f.write(SUMMARY)
